@@ -70,13 +70,35 @@ dom("#completed").addEventListener("click", (evt) => {
     }
     displayCompleted(completeTask);
 })
+
+
 // sắp xếp theo thứ tự bảng chữ cái  a -> z
 dom("#two").addEventListener("click", () => {
-    let increase = listTask.sort();
-    displayTodo(increase);
+    listTask.sort((a, b) => {
+        let nameA = a.toLowerCase()
+        let nameB = b.toLowerCase()
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+        return 0;
+    });
+    displayTodo(listTask)
 })
 // sắp xếp theo thứ tự bảng chữ cái z -> a
 dom("#three").addEventListener("click", () => {
-    let decrease = listTask.reverse();
-    displayTodo(decrease);
+    listTask.sort((a, b) => {
+        let nameA = a.toLowerCase()
+        let nameB = b.toLowerCase()
+        if (nameA < nameB) {
+            return 1;
+        }
+        if (nameA > nameB) {
+            return -1;
+        }
+        return 0;
+    });
+    displayTodo(listTask)
 })
